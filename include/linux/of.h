@@ -290,10 +290,34 @@ extern int of_property_read_u32_array(const struct device_node *np,
 				      size_t sz);
 extern int of_property_read_u64(const struct device_node *np,
 				const char *propname, u64 *out_value);
+
+extern int of_property_read_string(struct device_node *np,
+				   const char *propname,
+				   const char **out_string);
+
+
+
+extern int of_property_write_u32_index(const struct device_node *np,
+				       const char *propname,
+				       u32 index, u32 *in_value);
+extern int of_property_write_u8_array(const struct device_node *np,
+			const char *propname, u8 *in_values, size_t sz);
+extern int of_property_write_u16_array(const struct device_node *np,
+			const char *propname, u16 *in_values, size_t sz);
+extern int of_property_write_u32_array(const struct device_node *np,
+				      const char *propname,
+				      u32 *in_values,
+				      size_t sz);
+extern int of_property_write_u64(const struct device_node *np,
+				const char *propname, u64 *in_value);
+
 extern int of_property_read_u64_array(const struct device_node *np,
 				      const char *propname,
 				      u64 *out_values,
 				      size_t sz);
+extern int of_property_write_string(struct device_node *np,
+				   const char *propname,
+				   const char *in_string);
 
 extern int of_property_read_string(struct device_node *np,
 				   const char *propname,
@@ -340,6 +364,7 @@ extern int of_alias_max_index(const char *stem);
 
 extern int of_machine_is_compatible(const char *compat);
 
+extern int of_concat_property (struct device_node *dest, struct device_node *source);
 extern int of_add_property(struct device_node *np, struct property *prop);
 extern int of_remove_property(struct device_node *np, struct property *prop);
 extern int of_update_property(struct device_node *np, struct property *newprop);
